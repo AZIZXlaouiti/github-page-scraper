@@ -1,0 +1,11 @@
+{
+  "name": "page_scraper",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:AZIZXlaouiti/page_scraper.git",
+  "author": "AZIZXlaouiti <azizrocke@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
