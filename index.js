@@ -9,7 +9,7 @@ const getData = async()=>{
     const form = []
     const { data } =  await axios.get(url);
     const $ = cheerio.load(data)
-    const table = $('.js-pinned-items-reorder-list')
+    const table = $('ol')
     table.find('ol > li').each(async(i, e)=>{
         const $elemet = $(e)
         const state = {}
