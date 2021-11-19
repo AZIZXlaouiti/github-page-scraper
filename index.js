@@ -20,27 +20,20 @@ const getData = async()=>{
         const $row = cheerio.load(data)
         // const $about = cheerio.load(data)
         // const about = $about('.Layout-sidebar')
-        const row = $row('#readme > div > article:contains("Technologies") ')
-        // row.find('p').each((e)=>{
-        //     const $elemet = $(e)
-        //     console.log($elemet.text())
-        // })
-        if (row.length === 0){
-            form.push(state)
-            
-                }else {
-        // scraping readme 
-        row.find('ul').each((i, e)=>{
-            const $elemet = $(e)
-            state.technologie  = $elemet.text().trim().split('\n')
-                    })        
-                
-                    form.push(state)
-                }
-                if (form.length > 5 ){
+        const row = $row('#user-content-technologies')
 
-                    console.log(form, form.length)
-                }
+        if (!row.html()){
+            form.push(state)
+        }else {
+            state.technologie = row.parent().next().text().trim().split('\n')
+            form.push(state)
+        }
+        if (form.length >5){
+
+            console.log(form, form.length)
+        }
+
+       
         })
         
  
