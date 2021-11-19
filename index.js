@@ -30,7 +30,7 @@ const getData = async()=>{
             
                 }else {
         // scraping readme 
-        row.find('ul').first().each((i, e)=>{
+        row.find('ul').each((i, e)=>{
             const $elemet = $(e)
             state.technologie  = $elemet.text().trim().split('\n')
                     })        
