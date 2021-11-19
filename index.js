@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio  = require('cheerio');
-const url = "https://github.com/AZIZXlaouiti"
+require('dotenv').config()
+const url = process.env.BASE_URL
 
 
 // $('#user-79036942-pinned-items-reorder-form > ol')
