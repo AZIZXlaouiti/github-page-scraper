@@ -39,7 +39,7 @@ const url = process.env.BASE_URL
  
 // }
 // getData();
-class getData {
+class getPined {
   
   constructor(){
     this.form = []
@@ -75,4 +75,4 @@ class getData {
   }
  
 }
-module.exports = getData
+module.exports = getPined
