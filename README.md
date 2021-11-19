@@ -4,4 +4,5 @@ This is my approach to make my protfolio project section more dynamic
 # Technologies 
 - nodeJs
 - axios
-- cherrioJs
+- cheerioJs
+- jQuery
