@@ -59,7 +59,7 @@ class getPined {
             state.technologie = row.parent().next().text().trim().split('\n')
             this.form.push(state)
         }
-        this.speak()
+        // this.speak()
 
       })
   }

@@ -3,7 +3,7 @@ const app  = express()
 const getPined = require('../getPined')
 
 app.get('/api/pined/github' , async(req , res)=>{
-  const pined =  await getPined()
+  const pined =  await new getPined()
   res.json(pined)
 });
 
