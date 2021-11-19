@@ -1,12 +1,12 @@
 const axios = require('axios');
 const cheerio  = require('cheerio');
 const url = "https://github.com/AZIZXlaouiti"
-const form = []
 
 
 // $('#user-79036942-pinned-items-reorder-form > ol')
 // const foo = "https://api.github.com/users/AZIZXlaouiti"
 const getData = async()=>{
+    const form = []
     const { data } =  await axios.get(url);
     const $ = cheerio.load(data)
     //   const {data:{id}}  = await axios.get(foo)
@@ -21,21 +21,23 @@ const getData = async()=>{
         const row = $row('#readme > div > article:contains("Technologies") ')
         if (row.length === 0){
             form.push(state)
-            console.log(state)
             
                 }else {
 
         row.find('ul').first().each((i, e)=>{
             const $elemet = $(e)
             state.technologie  = $elemet.text().trim().split('\n')
-            console.log(state)
+            // console.log(state)
                     })        
                 
                     form.push(state)
                 }
+                if (form.length > 5 ){
+
+                    console.log(form, form.length)
+                }
         })
         
-        // console.log(form)
  
 }
 getData();
