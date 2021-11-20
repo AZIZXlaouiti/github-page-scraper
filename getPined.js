@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio  = require('cheerio');
 require('dotenv').config()
-async function getPined () { return  axios.get("https://github.com/AZIZXlaouiti")
+async function getPined (username) { return  axios.get(`https://github.com/${username}`)
   .then(async({data})=>{
     
     $ = cheerio.load(data)
@@ -30,7 +30,7 @@ async function getPined () { return  axios.get("https://github.com/AZIZXlaouiti"
     }
   }
   function getTech( repo){
-    return axios.get(`https://github.com/AZIZXlaouiti/${repo}`)
+    return axios.get(`https://github.com/${username}/${repo}`)
     .then(({data})=>{
        $ = cheerio.load(data)
        const row = $('#user-content-technologies')
