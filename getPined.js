@@ -2,38 +2,46 @@ const axios = require('axios');
 const cheerio  = require('cheerio');
 require('dotenv').config()
 const url = process.env.BASE_URL
-class getPined {
-  
-  constructor(){
-    this.form = []
-  }
-  async get_pined(){
-      this.table.find('ol > li').each(async(i,e)=>{
-        const $elemet = this.$(e)
-        const state = {}
-        state.name = this.$($elemet.find('span').first()).text()
-        const foo = `${url}/${state.name}`
-        const { data } =  await axios.get(foo);
-        const $row = cheerio.load(data)
-        const row = $row('#user-content-technologies')
-        if (!row.html()){
-            this.form.push(state)
-        }else {
-            state.technologie = row.parent().next().text().trim().split('\n')
-            this.form.push(state)
+async function getPined () { return  axios.get("https://github.com/AZIZXlaouiti")
+  .then(async(resp)=>{
+    
+    $ = cheerio.load(resp.data)
+    const pinned = $('.pinned-item-list-item.public')
+    if (!pinned || pinned.length === 0)return []
+    const result = []
+    for(const [index , item] of Object.entries(pinned)){
+        if (!isNaN(index)){
+          const repo = getRepo($ , item)
+          const tech = await getTech(repo )
+            
+            result[index] = {
+                repo : repo ,
+                tech : tech
+            }
         }
-      })
+    }
+    return result
   }
-  async get_data(){
-    const { data } =  await axios.get(url);
-    this.$ = cheerio.load(data)
-    this.table = this.$('ol')
-    this.get_pined()
+  )
+  function getRepo($, item) {
+    try {
+      return $(item).find('.repo').text()
+    } catch (error) {
+      return undefined
+    }
   }
-
-  speak(){
-     console.log(this.form)
+  function getTech( repo){
+    return axios.get(`https://github.com/AZIZXlaouiti/${repo}`)
+    .then((resp)=>{
+       $ = cheerio.load(resp.data)
+       const row = $('#user-content-technologies')
+       if (!row.html()){
+        return 
+       }else {
+        return row.parent().next().text().trim().split('\n')
+       }
+    })
+  
   }
- 
 }
 module.exports = getPined

@@ -1,10 +1,10 @@
 const express = require('express')
 const app  = express()
 const getPined = require('../getPined')
-
+const url = process.env.BASE_URL
 app.get('/api/pined/github' , async(req , res)=>{
-  const pined =  await new getPined()
-  res.json(pined)
+  const result =  await getPined("https://github.com/AZIZXlaouiti")
+  res.json( result)
 });
 
 
