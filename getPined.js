@@ -16,7 +16,7 @@ async function getPined () { return  axios.get("https://github.com/AZIZXlaouiti"
             
             result[index] = {
                 repo : repo ,
-                tech : tech
+                technologie : tech
             }
         }
     }
