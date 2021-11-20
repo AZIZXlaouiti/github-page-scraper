@@ -3,7 +3,6 @@ const app  = express()
 const getPined = require('../getPined')
 const qr = require('querystring')
 const url = require('url')
-const res = require('express/lib/response')
 app.get('/api/pined/github/' , async(req , res)=>{
   const { query } = url.parse(req.url)
   const { username} = qr.parse(query)
