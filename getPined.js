@@ -1,11 +1,10 @@
 const axios = require('axios');
 const cheerio  = require('cheerio');
 require('dotenv').config()
-const url = process.env.BASE_URL
 async function getPined () { return  axios.get("https://github.com/AZIZXlaouiti")
-  .then(async(resp)=>{
+  .then(async({data})=>{
     
-    $ = cheerio.load(resp.data)
+    $ = cheerio.load(data)
     const pinned = $('.pinned-item-list-item.public')
     if (!pinned || pinned.length === 0)return []
     const result = []
@@ -32,8 +31,8 @@ async function getPined () { return  axios.get("https://github.com/AZIZXlaouiti"
   }
   function getTech( repo){
     return axios.get(`https://github.com/AZIZXlaouiti/${repo}`)
-    .then((resp)=>{
-       $ = cheerio.load(resp.data)
+    .then(({data})=>{
+       $ = cheerio.load(data)
        const row = $('#user-content-technologies')
        if (!row.html()){
         return 
