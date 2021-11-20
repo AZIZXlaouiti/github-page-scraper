@@ -1,6 +1,5 @@
 const axios = require('axios');
 const cheerio  = require('cheerio');
-require('dotenv').config()
 async function getPined (username) { return  axios.get(`https://github.com/${username}`)
   .then(async({data})=>{
     
