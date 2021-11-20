@@ -9,7 +9,16 @@ app.get('/api/pined/github/' , async(req , res)=>{
   const result =  await getPined(`${username}`)
   res.json( result)
 });
-
+// app.get('/' ,(req , res )=>{
+//   const intro = "welcome to Gihub scraper"
+//   const author = "https://github.com/AZIZXlaouiti"
+//   // res.send(intro + "made by "+author)
+//   res.links({
+//     next: author,
+//     });
+//     res.get('link')
+// })
+app.use(express.static('public'))
 
 const port  = process.env.PORT || 4242
 app.listen(port , ()=>{
