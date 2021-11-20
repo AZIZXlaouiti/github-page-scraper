@@ -3,8 +3,8 @@ Scraping the Web with Node.js + Finding Undocumented APIs and Reversing Engineer
 This is my approach to make my protfolio project section more dynamic 
 # getting started
 * running in development :
- - create a .env file and supply it with you desired github profile for example `BASE_URL = https://github.com/your_user_profile`
- - cd to `/server` then run `node index.js` to test your scraper 
+ * create a .env file and supply it with you desired github profile for example `BASE_URL = https://github.com/your_user_profile`
+ * cd to `/server` then run `node index.js` to test your scraper 
 * running in production : 
   - this API service will get deployed shortly so stay tuned 
 # Technologies 
