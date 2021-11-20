@@ -1,9 +1,12 @@
 const express = require('express')
 const app  = express()
 const getPined = require('../getPined')
-const url = process.env.BASE_URL
-app.get('/api/pined/github' , async(req , res)=>{
-  const result =  await getPined('AZIZXlaouiti')
+const qr = require('querystring')
+const url = require('url')
+app.get('/api/pined/github/' , async(req , res)=>{
+  const { query } = url.parse(req.url)
+  const { username} = qr.parse(query)
+  const result =  await getPined(`${username}`)
   res.json( result)
 });
 
