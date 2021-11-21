@@ -35,7 +35,7 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
       return undefined
     }
   }
-  function getTech(repo , result  , index){
+  function getTech(repo){
     return axios.get(`https://github.com/${username}/${repo}`)
     .then(({data})=>{
        $ = cheerio.load(data)
