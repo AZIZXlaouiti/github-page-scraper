@@ -1,6 +1,6 @@
 const express = require('express')
 const app  = express()
-const getPined = require('../getPined')
+const getPined = require('../getPinned')
 const qr = require('querystring')
 const url = require('url')
 const { send } = require('micro')

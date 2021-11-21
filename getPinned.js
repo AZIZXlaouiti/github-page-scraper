@@ -1,6 +1,6 @@
 const axios = require('axios');
 const cheerio  = require('cheerio');
-async function getPined (username) { return  axios.get(`https://github.com/${username}`)
+async function getPinned (username) { return  axios.get(`https://github.com/${username}`)
   .then(async({data})=>{
     
     $ = cheerio.load(data)
@@ -85,4 +85,4 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
   } 
   
 }
-module.exports = getPined
+module.exports = getPinned
