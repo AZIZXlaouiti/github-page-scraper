@@ -7,7 +7,7 @@ This is my approach to make my protfolio project section more dynamic
   - for example `BASE_URL = https://github.com/your_user_profile`
   - cd to `/server` then run `node index.js` to test your scraper 
 * running in production : 
-  - to use in project call `https://github-scraper-api.herokuapp.com/api/github/?username=YOUR_GITHUB_NAME` in your fetch request
+ - fetch url = `https://github-scraper-api.herokuapp.com/api/github/?username=YOUR_GITHUB_NAME` 
   - you can test the API [here](https://github-scraper-api.herokuapp.com/)
   - please be mindful with your use 
 ## Technologies 
