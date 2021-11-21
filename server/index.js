@@ -1,6 +1,6 @@
 const express = require('express')
 const app  = express()
-const getPined = require('../getPinned')
+const getPinned = require('../getPinned')
 const qr = require('querystring')
 const url = require('url')
 const { send } = require('micro')
@@ -15,7 +15,7 @@ app.get('/api/github/' , async(req , res)=>{
   }
   const { query } = url.parse(req.url)
   const { username} = qr.parse(query)
-  const result =  await getPined(`${username}`)
+  const result =  await getPinned(`${username}`)
   res.json( result)
 });
 
