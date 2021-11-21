@@ -7,7 +7,7 @@ This is my approach to make my protfolio project section more dynamic
   - for example `BASE_URL = https://github.com/your_user_profile`
   - cd to `/server` then run `node index.js` to test your scraper 
 * running in production : 
-  - this API service will get deployed shortly so stay tuned ...
+  - you can checkout API service [here](https://github-scraper-api.herokuapp.com/)
 ## Technologies 
 - nodeJs
 - axios
