@@ -11,11 +11,12 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
         if (!isNaN(index)){
           const repo = getRepo($ , item)
           const tech = await getTech(repo )
-            
+          const language = getLanguage($, item)
             result[index] = {
                 repo : repo ,
                 link:`https://github.com/${username}/${repo}`,
-                technologie : tech 
+                technologie : tech ,
+                language: language
             }
         }
     }
@@ -41,6 +42,13 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
        }
     })
   
+  }
+  function getLanguage($, item) {
+    try {
+      return $(item).find('[itemprop="programmingLanguage"]').text()
+    } catch (error) {
+      return undefined
+    }
   }
   
 }
