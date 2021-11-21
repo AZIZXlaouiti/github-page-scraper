@@ -10,13 +10,18 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
     for(const [index , item] of Object.entries(pinned)){
         if (!isNaN(index)){
           const repo = getRepo($ , item)
-          const tech = await getTech(repo )
+          const {technologie , web , description}= await getTech(repo , result , index)
           const language = getLanguage($, item)
             result[index] = {
+                
                 repo : repo ,
                 link:`https://github.com/${username}/${repo}`,
-                technologie : tech ,
-                language: language
+                language: language , 
+                technologie : technologie,
+                web: web,
+                description: description
+               
+                
             }
         }
     }
@@ -30,15 +35,17 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
       return undefined
     }
   }
-  function getTech( repo){
+  function getTech(repo , result  , index){
     return axios.get(`https://github.com/${username}/${repo}`)
     .then(({data})=>{
        $ = cheerio.load(data)
        const row = $('#user-content-technologies')
+     
        if (!row.html()){
-        return 
-       }else {
-        return row.parent().next().text().trim().split('\n')
+                return {web:getWebsite($) , description:getDescription($)}
+                
+              }else {
+        return {  description:getDescription($), technologie:row.parent().next().text().trim().split('\n') , web: getWebsite($)}
        }
     })
   
@@ -50,6 +57,32 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
       return undefined
     }
   }
+  function getDescription($){
+    try {
+      return $(".BorderGrid-cell > p").text()
+    }
+    catch (error){
+      return undefined
+    }
+  }
+  function getWebsite($) {
+      try {
+         
+        return getRef($)
+      } catch (error) {
+        return undefined
+      }
+    
+  }
+  function getRef ($){
+
+    try {
+      const about  = $('.BorderGrid-cell a').attr('href').trim()
+      return about !== '#readme'?about:undefined
+    } catch (error) {
+      return undefined
+    }
+  } 
   
 }
 module.exports = getPined
