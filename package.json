@@ -17,5 +17,8 @@
   },
   "scripts": {
     "start": "node server/index.js"
+  },
+  "engine":{
+    "node":"16.2.0"
   }
 }

@@ -18,8 +18,7 @@ app.get('/api/github/' , async(req , res)=>{
   const result =  await getPined(`${username}`)
   res.json( result)
 });
-// console.log(__dirname)
-// app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/' , (req , res)=>{
   res.send(
 
