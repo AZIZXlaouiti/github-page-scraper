@@ -30,7 +30,7 @@ app.get('/' , (req , res)=>{
 <style>body {font-family: Helvetica, serif;margin: 30px;}</style>
 <p>welcome to github-api-scraper</p>
 <p>
-  <form action="/api/pined/github/">
+  <form action="/api/github/">
     <input type="text" name="username" placeholder="username" />
     <button type="submit">Go!</button>
   </form>
