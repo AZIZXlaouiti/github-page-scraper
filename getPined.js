@@ -59,7 +59,7 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
   }
   function getDescription($){
     try {
-      return $(".BorderGrid-cell > p").text()
+      return $(".BorderGrid-cell > p").text().trim()
     }
     catch (error){
       return undefined
