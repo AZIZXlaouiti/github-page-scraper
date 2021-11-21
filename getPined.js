@@ -14,7 +14,8 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
             
             result[index] = {
                 repo : repo ,
-                technologie : tech
+                link:`https://github.com/${username}/${repo}`,
+                technologie : tech 
             }
         }
     }
@@ -41,5 +42,6 @@ async function getPined (username) { return  axios.get(`https://github.com/${use
     })
   
   }
+  
 }
 module.exports = getPined
