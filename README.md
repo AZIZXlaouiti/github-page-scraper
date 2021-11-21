@@ -14,5 +14,5 @@ This is my approach to make my protfolio project section more dynamic
 - cheerioJs
 - jQuery
 ## About 
-this project is fully developed by me , if you have any questions conserning the code please feel free to reach out to me on https://www.linkedin.com/in/mohamed-aziz-laouiti/ 
+this project is fully developed by me , if you have any questions conserning the code please feel free to reach out to me on [linkedin](https://www.linkedin.com/in/mohamed-aziz-laouiti/) 
 don't stop coding ...
