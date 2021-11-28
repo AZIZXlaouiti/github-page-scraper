@@ -10,8 +10,9 @@ async function getPinned (username) { return  axios.get(`https://github.com/${us
     for(const [index , item] of Object.entries(pinned)){
         if (!isNaN(index)){
           const repo = getRepo($ , item)
-          const {technologie , web , description}= await getTech(repo , result , index)
+          const {technologie , web , description , img}= await getTech(repo , result , index)
           const language = getLanguage($, item)
+          
             result[index] = {
                 
                 repo : repo ,
@@ -19,8 +20,8 @@ async function getPinned (username) { return  axios.get(`https://github.com/${us
                 language: language , 
                 technologie : technologie,
                 web: web,
-                description: description
-               
+                description: description,
+                img: img
                 
             }
         }
@@ -42,10 +43,10 @@ async function getPinned (username) { return  axios.get(`https://github.com/${us
        const row = $('#user-content-technologies')
      
        if (!row.html()){
-                return {web:getWebsite($) , description:getDescription($)}
+                return {web:getWebsite($) , description:getDescription($) , img:getImg($)}
                 
               }else {
-        return {  description:getDescription($), technologie:row.parent().next().text().trim().split('\n') , web: getWebsite($)}
+        return {  description:getDescription($), technologie:row.parent().next().text().trim().split('\n') , web: getWebsite($) , img:getImg($)}
        }
     })
   
@@ -73,6 +74,15 @@ async function getPinned (username) { return  axios.get(`https://github.com/${us
         return undefined
       }
     
+  }
+  function getImg($){
+    try {
+       return $("#readme img").attr('src').trim()
+       
+    }
+    catch (error){
+      return undefined
+    }
   }
   function getRef ($){
 
